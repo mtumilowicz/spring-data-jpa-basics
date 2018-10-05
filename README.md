@@ -1,1 +1,1 @@
-# spring-data-basics
+# spring-data-jpa-basics
