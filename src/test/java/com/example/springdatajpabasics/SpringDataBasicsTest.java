@@ -12,12 +12,14 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.hasSize;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by mtumilowicz on 2018-10-05.
@@ -75,10 +77,10 @@ public class SpringDataBasicsTest {
 
     @Test
     public void findTop1ByName() {
-        List<Employee> hemingways = repository.findByName("Hemingway");
+        Optional<Employee> top1Hemingway = repository.findTop1ByName("Hemingway");
 
-        assertThat(hemingways, hasSize(1));
-        assertThat(hemingways.get(0).getName(), is("Hemingway"));
+        assertTrue(top1Hemingway.isPresent());
+        assertThat(top1Hemingway.get().getName(), is("Hemingway"));
     }
 
     @Test
