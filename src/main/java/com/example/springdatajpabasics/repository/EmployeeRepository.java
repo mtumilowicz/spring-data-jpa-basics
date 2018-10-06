@@ -14,6 +14,7 @@ import java.util.Optional;
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     List<Employee> findByName(String name);
     Optional<Employee> findTop1ByName(String name);
-    List<Employee> findByIssue_Description(String description);
-    List<Employee> findDistinctEmployeByNameIgnoreCase(String name);
+    List<Employee> findByIssues_Description(String description);
+    List<Employee> findByAddress_City(String city);
+    List<Employee> findDistinctEmployeeByNameIgnoreCase(String name);
 }

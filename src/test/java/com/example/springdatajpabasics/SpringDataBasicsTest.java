@@ -13,9 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-
 /**
  * Created by mtumilowicz on 2018-10-05.
  */
@@ -31,8 +28,8 @@ public class SpringDataBasicsTest {
     public void paging() {
         Page<Employee> all = repository.findAll(PageRequest.of(2, 2));
         
-        assertThat(all.getTotalElements(), is(4));
-        assertThat(all.getTotalPages(), is(2));
+//        assertThat(all.getTotalElements(), is(4));
+//        assertThat(all.getTotalPages(), is(2));
     }
 
     @Test
@@ -43,5 +40,30 @@ public class SpringDataBasicsTest {
     @Test
     public void pagingAndSorting() {
         Page<Employee> name = repository.findAll(PageRequest.of(2, 2, Sort.by("name").ascending()));
+    }
+    
+    @Test
+    public void findByName() {
+        
+    }
+
+    @Test
+    public void findTop1ByName() {
+
+    }
+    
+    @Test
+    public void findByIssues_Description() {
+        
+    }
+    
+    @Test
+    public void findByAddress_City() {
+        
+    }
+    
+    @Test
+    public void findDistinctEmployeeByNameIgnoreCase() {
+        
     }
 }
