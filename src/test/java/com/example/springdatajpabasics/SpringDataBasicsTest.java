@@ -34,16 +34,20 @@ public class SpringDataBasicsTest {
 
     @Test
     public void paging() {
+//        given
         Page<Employee> pages = repository.findAll(PageRequest.of(2, 2));
 
+//        then
         assertThat(pages.getTotalElements(), is(4L));
         assertThat(pages.getTotalPages(), is(2));
     }
 
     @Test
     public void sorting() {
+//        given
         List<Employee> employees = repository.findAll(Sort.by("name").ascending());
 
+//        then
         assertThat(employees, hasSize(4));
 
         Employee employee1 = employees.get(0);
@@ -60,52 +64,63 @@ public class SpringDataBasicsTest {
 
     @Test
     public void pagingAndSorting() {
+//        given
         PageRequest pageRequest = PageRequest.of(0, 2, Sort.by("address.city").ascending());
         Page<Employee> employee = repository.findAll(pageRequest);
-
-
+        
+//        then
         assertThat(employee.getContent().get(0).getAddress().getCity(), is("Key West"));
     }
 
     @Test
     public void findByName() {
+//        given
         List<Employee> hemingways = repository.findByName("Hemingway");
 
+//        then
         assertThat(hemingways, hasSize(1));
         assertThat(hemingways.get(0).getName(), is("Hemingway"));
     }
 
     @Test
     public void findTop1ByName() {
+//        given
         Optional<Employee> top1Hemingway = repository.findTop1ByName("Hemingway");
 
+//        then
         assertTrue(top1Hemingway.isPresent());
         assertThat(top1Hemingway.get().getName(), is("Hemingway"));
     }
 
     @Test
     public void findByIssues_Description() {
+//        given
         List<Employee> employees = repository.findByIssues_Description("improve coding skills");
 
+//        then
         assertThat(employees, hasSize(1));
         assertThat(employees.get(0).getName(), is("Tumilowicz"));
     }
 
     @Test
     public void findByAddress_City() {
+//        given
         List<String> employeeNames = repository.findByAddress_City("Krakow")
                 .stream()
                 .map(Employee::getName)
                 .collect(Collectors.toList());
-
+        
+//        then
         assertThat(employeeNames, hasSize(2));
         assertThat(employeeNames, contains("Mrozek", "Lem"));
     }
 
     @Test
     public void findDistinctEmployeeByNameIgnoreCase() {
+//        given
         List<Employee> employees = repository.findDistinctEmployeeByNameIgnoreCase("MROZEK");
 
+//        then
         assertThat(employees, hasSize(1));
         assertThat(employees.get(0).getName(), is("Mrozek"));
     }
