@@ -3,10 +3,7 @@ package com.example.springdatajpabasics.entity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 
 /**
@@ -22,12 +19,13 @@ import java.util.Collection;
 public class Employee {
     @Id
     Integer id;
-    
+
     String name;
-    
+
     @Embedded
     Address address;
-    
+
     @OneToMany
+    @JoinColumn
     Collection<Issue> issues;
 }

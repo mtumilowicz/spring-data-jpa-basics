@@ -14,6 +14,7 @@ import javax.persistence.Embeddable;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
 @ToString
+@Getter
 public class Address {
     String street;
     String city;
