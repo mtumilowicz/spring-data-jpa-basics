@@ -8,7 +8,7 @@ INSERT INTO EMPLOYEE
 VALUES (3, 'Krakow', null, 'Lem');
 
 INSERT INTO EMPLOYEE
-VALUES (4, 'Krakow', 'Plac Szczepanski', 'Mrozek');
+VALUES (4, 'Key West', '907 Whitehead St', 'Hemingway');
 
 INSERT INTO ISSUE
 VALUES (1, 'stay sharp!', 1);
